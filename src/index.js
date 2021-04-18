@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import './index.css';
 import App from './containers/App';//parnet of Card
 import reportWebVitals from './reportWebVitals';//目前不會用到
+import { searchRobots } from './reducers';
 import 'tachyons';
 
+const store = createStore(searchRobots) //用reducer去建立store
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
